@@ -2,11 +2,8 @@ buildscript {
      repositories {
          mavenLocal()
          jcenter()
+         maven { url 'https://jitpack.io' }
      }
-}
-
-plugins {
-    id "com.jfrog.bintray" version "1.6"
 }
 
 apply plugin: 'groovy'
@@ -23,7 +20,7 @@ ext {
 
 repositories {
     jcenter()
-//    maven { url 'http://dl.bintray.com/lordofthejars/maven'}
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
