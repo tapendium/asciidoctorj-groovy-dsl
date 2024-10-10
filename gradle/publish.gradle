@@ -22,7 +22,6 @@ ext {
 }
 
 apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
 
 def projectArtifactId = 'asciidoctorj-groovy-dsl'
 
@@ -107,23 +106,3 @@ publishing {
 }
 
 task install(dependsOn: publishToMavenLocal)
-
-if (!project.hasProperty('bintrayUsername')) ext.bintrayUsername = ''
-if (!project.hasProperty('bintrayApiKey')) ext.bintrayApiKey = ''
-
-bintray {
-    user = project.bintrayUsername
-    key = project.bintrayApiKey
-
-    dryRun = project.hasProperty('dryRun') && project.dryRun.toBoolean()
-
-    publications = ['mavenCustom']
-    pkg {
-        repo = 'maven'
-        userOrg = 'asciidoctor'
-        name = projectArtifactId
-        desc = 'A Groovy DSL that allows to define and register asciidoctor extensions using a DSL'
-        licenses = ['Apache-2.0']
-        labels = ['groovy', 'asciidoctor']
-    }
-}
